@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buy a license</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0F1210;
+    --paper: #F2EFE6;
+    --green: #3D8361;
+    --amber: #E8A33D;
+    --faded: #8B8378;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    margin: 0;
+  }
+  .card {
+    max-width: 420px;
+    width: 100%;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 32px;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+  .price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--green);
+    margin: 16px 0 4px;
+  }
+  .price span {
+    font-size: 14px;
+    color: var(--faded);
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+  }
+  p {
+    font-size: 14px;
+    color: var(--faded);
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  input {
+    font-family: 'Inter', sans-serif;
+    border: 1.5px solid var(--faded);
+    border-radius: 3px;
+    padding: 12px 14px;
+    font-size: 14px;
+    background: transparent;
+    color: var(--ink);
+  }
+  input:focus {
+    outline: none;
+    border-color: var(--green);
+  }
+  button {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 14px;
+    background: var(--amber);
+    color: var(--ink);
+    border: none;
+    border-radius: 3px;
+    padding: 13px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+  }
+  button:hover { opacity: 0.9; }
+  .trust {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--faded);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="eyebrow">One-time payment</div>
+    <h1>Unlock your resource</h1>
+    <div class="price">${{ price }} <span>/ per resource, forever</span></div>
+    <p>Pay once, get a license key by email, activate it on any resource you create.</p>
+    <form method="POST" action="/checkout/initiate">
+      <input type="email" name="email" placeholder="you@email.com" required>
+      <button type="submit">Continue to payment</button>
+    </form>
+    <div class="trust">🔒 Secured by Flutterwave</div>
+  </div>
+</body>
+</html>

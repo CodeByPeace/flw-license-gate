@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flutterwave License Gate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0F1210;
+    --paper: #F2EFE6;
+    --green: #3D8361;
+    --amber: #E8A33D;
+    --faded: #8B8378;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrap { max-width: 480px; width: 100%; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+  p.sub {
+    font-size: 14px;
+    color: var(--faded);
+    line-height: 1.5;
+    margin: 0 0 28px;
+  }
+  .card {
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .card h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 14px;
+    color: var(--faded);
+  }
+  form { display: flex; gap: 8px; }
+  input {
+    flex: 1;
+    font-family: 'Inter', sans-serif;
+    border: 1.5px solid var(--faded);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  input:focus { outline: none; border-color: var(--green); }
+  button {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 13px;
+    background: var(--green);
+    color: var(--paper);
+    border: none;
+    border-radius: 3px;
+    padding: 10px 16px;
+    cursor: pointer;
+  }
+  button:hover { background: #336f52; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  ul li { padding: 8px 0; border-bottom: 1px solid #ddd8ca; }
+  ul li:last-child { border-bottom: none; }
+  ul a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  ul a:hover { color: var(--green); }
+  .empty { font-size: 13px; color: var(--faded); font-style: italic; }
+  a.pricing {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    color: var(--amber);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 8px;
+  }
+  a.pricing:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Reference template</div>
+    <h1>Flutterwave License Gate</h1>
+    <p class="sub">Gate any resource behind a one-time Flutterwave payment, using a license-key system. Fork this and swap "resource" for whatever you're selling.</p>
+
+    <div class="card">
+      <h3>Create a demo resource</h3>
+      <form method="POST" action="/resource/create">
+        <input name="name" placeholder="Resource name" required>
+        <button type="submit">Create</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Existing resources</h3>
+      {% if resources %}
+      <ul>
+        {% for r in resources %}
+          <li><a href="/resource/{{ r.id }}/view">{{ r.name }}</a></li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="empty">No resources yet. Create one above.</p>
+      {% endif %}
+    </div>
+
+    <a class="pricing" href="/pricing">View pricing →</a>
+  </div>
+</body>
+</html>

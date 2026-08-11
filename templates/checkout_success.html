@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>License activated</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0F1210;
+    --paper: #F2EFE6;
+    --green: #3D8361;
+    --amber: #E8A33D;
+    --faded: #8B8378;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    margin: 0;
+  }
+  .wrap { max-width: 420px; width: 100%; text-align: center; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 24px;
+    color: var(--paper);
+  }
+  .stub {
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 28px 20px;
+    transform: rotate(-1deg);
+    position: relative;
+    border: 1.5px dashed var(--faded);
+  }
+  .stub-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 12px;
+  }
+  .key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--green);
+    word-break: break-all;
+  }
+  p.note {
+    font-size: 13px;
+    color: var(--faded);
+    margin-top: 24px;
+    line-height: 1.5;
+  }
+  a.home {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--amber);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  a.home:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Payment confirmed</div>
+    <h1>Your license key</h1>
+    <div class="stub">
+      <div class="stub-label">— · — · — · — · — · —</div>
+      <div class="key">{{ license_key }}</div>
+    </div>
+    <p class="note">Save this key. Enter it on the resource you want to unlock to activate it.</p>
+    <a class="home" href="/">Go set up your resource →</a>
+  </div>
+</body>
+</html>

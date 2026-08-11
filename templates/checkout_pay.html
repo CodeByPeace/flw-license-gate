@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete payment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<style>
+  :root {
+    --ink: #0F1210;
+    --paper: #F2EFE6;
+    --green: #3D8361;
+    --amber: #E8A33D;
+    --faded: #8B8378;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    margin: 0;
+  }
+  .card {
+    max-width: 420px;
+    width: 100%;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 32px;
+    text-align: center;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+  p {
+    font-size: 14px;
+    color: var(--faded);
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+  button {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 14px;
+    background: var(--green);
+    color: var(--paper);
+    border: none;
+    border-radius: 3px;
+    padding: 13px 24px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    width: 100%;
+  }
+  button:hover { background: #336f52; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="eyebrow">Almost there</div>
+    <h1>Pay ${{ amount }}</h1>
+    <p>{{ email }} — you'll get your license key right after payment.</p>
+    <button onclick="payWithFlutterwave()">Pay now</button>
+  </div>
+  <script>
+    function payWithFlutterwave() {
+      FlutterwaveCheckout({
+        public_key: "{{ flw_public_key }}",
+        tx_ref: "{{ tx_ref }}",
+        amount: {{ amount }},
+        currency: "USD",
+        payment_options: "card",
+        customer: { email: "{{ email }}" },
+        customizations: { title: "License purchase" },
+        callback: function (data) {
+          window.location.href = "{{ redirect_url }}?transaction_id=" + data.transaction_id + "&tx_ref={{ tx_ref }}&status=" + data.status;
+        },
+        onclose: function () {}
+      });
+    }
+  </script>
+</body>
+</html>

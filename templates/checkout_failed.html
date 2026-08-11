@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment failed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0F1210;
+    --paper: #F2EFE6;
+    --green: #3D8361;
+    --amber: #E8A33D;
+    --faded: #8B8378;
+    --red: #B4432C;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    margin: 0;
+  }
+  .card {
+    max-width: 420px;
+    width: 100%;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 32px;
+    text-align: center;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+  p {
+    font-size: 14px;
+    color: var(--faded);
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+  a.retry {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 14px;
+    background: var(--green);
+    color: var(--paper);
+    border-radius: 3px;
+    padding: 13px 24px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+  a.retry:hover { background: #336f52; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="eyebrow">Payment not completed</div>
+    <h1>Something went wrong</h1>
+    <p>Your payment didn't go through. No charge was made. You can try again.</p>
+    <a class="retry" href="/pricing">Try again →</a>
+  </div>
+</body>
+</html>
