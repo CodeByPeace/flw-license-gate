@@ -21,7 +21,7 @@ ready to fork.
 2. On successful payment, the server verifies the transaction server-side
    (never trusts the client callback alone) and generates a license key
 3. Buyer enters that key on `/resource/<id>/activate`
-4. The resource unlocks — any route can be gated with one line:
+4. The resource unlocks, any route can be gated with one line:
    `if not resource_is_licensed(id): redirect to license_required`
 
 ## Quickstart
@@ -39,20 +39,20 @@ Visit `http://localhost:8080`.
 
 ## Adapting this to your project
 
-Everything is built around a generic `resource` — swap that for whatever
+Everything is built around a generic `resource`, swap that for whatever
 you're actually gating (a club, a project, a document, a user account).
 The core license logic (`get_license_for_resource`, `resource_is_licensed`,
 `activate_license`, the Flutterwave verify call) doesn't need to change.
 
 ## Security notes
 
-- Never trust the payment callback status alone — this template always
+- Never trust the payment callback status alone, this template always
   re-verifies the transaction server-side against Flutterwave's API
   before issuing a license key
-- Keep `FLW_SECRET_KEY` out of your repo — use environment variables
-- This is a reference template, not a production payment system — review
+- Keep `FLW_SECRET_KEY` out of your repo, use environment variables
+- This is a reference template, not a production payment system, review
   it for your own threat model before shipping
 
 ## License
 
-MIT — fork it, strip it, ship it.
+MIT, fork it, strip it, ship it.
